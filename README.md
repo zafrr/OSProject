@@ -1,13 +1,13 @@
 # OSProject Running Containers for Application Development
 
-Group Name: __Fill your team name__. 
+Group Name: Emilet 
 
-Section: __Fill your class section__. 
+Section: 1
 
 Team Mates:
-1. __Fill name__ and __matric no__
-2. __Fill name__ and __matric no__
-3. __Fill name__ and __matric no__
+1. Muhammad Zafran Syahmi Bin Mohd Nasharuddin 2111851
+2. Muhammad Islahuddin Bin Mohamad Azim 
+2118177
 
 ## Rules
 1. You are allowed to have **3 group** members. *Exception* is allowed **IFF (if and only if)** you are allowed to have 4 group members if you are a **multinational** or a **multigender** group. 
@@ -24,8 +24,24 @@ Team Mates:
 
 ***Questions:***
 
-1. What is the link of the fork OSProject in your repository. ***(1 mark)*** __Fill answer here__.
-2. How many files and folders are in this repository. ***(1 mark)*** __Fill answer here__.
+1. What is the link of the fork OSProject in your repository. ***(1 mark)*** 
+```bash
+https://github.com/zafrr/OSProject .
+```
+2. How many files and folders are in this repository. ***(1 mark)*** 
+```bash
+1 file 1 folder 
+README.md
+images
+
+after creating web
+3folders 1 file
+myroot
+webpage
+image 
+README.md
+
+```
 
 
 ## Exploring github codespaces
@@ -57,9 +73,19 @@ Team Mates:
 
 ***Questions:***
 
-1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)*** __Fill answer here__.
-2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)*** __Fill answer here__.
-3. Why must we commit and sync our current work on source control? ***(1 mark)*** __Fill answer here__.
+1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)*** 
+```bash
+linux
+```.
+2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)*** 
+```bash
+2-core 8GB ram 32GB space
+4-core 16GB ran 32GB space
+```
+3. Why must we commit and sync our current work on source control? ***(1 mark)*** 
+```bash
+to keep track of the changes made, easier to roll back to an earlier version and allow the the code stability and collaborative in overall project
+```
 
 ## Exploring the Terminal
 
@@ -75,9 +101,6 @@ codespace
 ***Questions:***
 
 Look at the TERMINAL tab. Run the following commands and provide the output here. 
-
-1. What is the link of the fork OSProject in your repository. ***(1 mark)*** https://github.com/Islahazim/OSProject
-2. How many files and folders are in this repository. ***(1 mark)*** 2 files: images file, README.md file.
 
 1. Run the command **pwd** . ***(1 mark)*** 
 ```bash
@@ -400,9 +423,13 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 ***Questions:***
 
 1. Are files in the container persistent. Why not?. ***(1 mark)*** 
-because docker is just .
+```bash
+not persistent because data inside the docker is not persistent set by default, as we remove the instance/docker container it will also delete the data inside the container
+```
 2. Can we run two, or three instances of debian linux? . ***(1 mark)*** 
-yes.
+```bash
+yes we can run more than three instance of any linux.
+```
 
 ## Running your own container with persistent storage
 
@@ -422,16 +449,24 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 ***Questions:***
 
 1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** 
-root 
+```bash
+@zafrr ➜ /workspaces/OSProject (main) $ ls -l myroot
+total 0
+where there is total 0 ownership of this file
+user-root
+group-root
+``` 
 so how to check this permission .
 2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
-yes, by using chmod u+x command 
 ```bash
 //use sudo and chown
 sudo chown -R codespace:codespace myroot
 
 ```
-*** __Fill answer here__.***
+
+```bash
+yes, by using chmod u+x command 
+```
 
 ## You are on your own, create your own static webpage
 
