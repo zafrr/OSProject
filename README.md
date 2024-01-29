@@ -128,6 +128,7 @@ root@f65be1987f84:~# nano helloworld.txt
 5. Edit your helloworld.txt, create your messsage and save by typing ctrl-X. Once saved, explore using the container to see where the file is located. Then exit the shell, by typing **exit**.
 
 6. Stop the container and run **docker ps -a**, and restart the container again. Is your file in the container still available?
+yes, all the file still there
 ```bash 
 @joeynor ➜ /workspaces/OSProject (main) $ docker stop romantic_jackson
 
@@ -139,7 +140,7 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 ```
 
 7. Stop the container and delete the container. What happened to your helloworld.txt?
-
+the file helloworld.txt will also been deleted
 ```bash 
 @joeynor ➜ /workspaces/OSProject (main) $ docker stop romantic_jackson
 
@@ -152,8 +153,8 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 
 ***Questions:***
 
-1. Are files in the container persistent. Why not?. ***(1 mark)*** __Fill answer here__.
-2. Can we run two, or three instances of debian linux? . ***(1 mark)*** __Fill answer here__.
+1. Are files in the container persistent. Why not?. ***(1 mark)*** because docker is just .
+2. Can we run two, or three instances of debian linux? . ***(1 mark)*** yes.
 
 ## Running your own container with persistent storage
 
@@ -172,8 +173,10 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** 
+root so how to check this permission .
 2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
+
 ```bash
 //use sudo and chown
 sudo chown -R codespace:codespace myroot
