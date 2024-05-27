@@ -332,14 +332,36 @@ Linux codespaces-00807c 6.5.0-1021-azure #22~22.04.1-Ubuntu SMP Tue Apr 30 16:08
 ```
 11. What is the available free memory in the system. ***(1 mark)*** 
 ```bash
-
+6112.5 avail Mem
 ```
-12. What is the available disk space mounted on /workspace. ***(1 mark)*** __Fill answer here__.
-13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Fill answer here__.
-14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** __Fill answer here__.
-15. What is the TLB size of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** __Fill answer here__.
+12. What is the available disk space mounted on /workspace. ***(1 mark)*** 
+```bash
+available 1.5Gi
+```
+13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** 
+```bash
+version: Linux kernel version 6.5.0-1021-azure.
+hardware: x86_64 or 64 bit architecture
+````
+14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** 
+```bash 
+ls command displays the names of files and directories in the current directory. while The ls -asl command provides a more detailed output
+``` 
+15. What is the TLB size of the Virtual CPU. ***(1 mark)*** 
+```bash 
+TLB size      : 2560 4K pages
+```
+
+16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** 
+```bash 
+cpu MHz     : 2711.232 -processor 0
+cpu MHz     : 2706.808 -processor 1
+```
+
+17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** 
+```bash 
+3049 codespa+  20   0   21.1g 353876  46464 S   1.3   4.4   1:05.16 node
+```
 
 ## Running your own container instance.
 
@@ -399,8 +421,14 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 
 ***Questions:***
 
-1. Are files in the container persistent. Why not?. ***(1 mark)*** __Fill answer here__.
-2. Can we run two, or three instances of debian linux? . ***(1 mark)*** __Fill answer here__.
+1. Are files in the container persistent. Why not?. ***(1 mark)*** 
+```bash 
+not persistent because data inside the docker is not persistent set by default, as we remove the instance/docker container it will also delete the data inside the container
+```
+2. Can we run two, or three instances of debian linux? . ***(1 mark)*** 
+```bash 
+yes we can run more than three instance of any linux.ls
+```
 
 ## Running your own container with persistent storage
 
@@ -419,14 +447,23 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** 
+```bash
+@Nopaalll ➜ /workspaces/NatSysProject/myroot (main) $ ls -l
+total 0
+where there is total 0 ownership of this file
+user-root
+group-root
+```
 2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
 ```bash
 //use sudo and chown
 sudo chown -R codespace:codespace myroot
-
+ 
 ```
-*** __Fill answer here__.***
+```
+bash yes, by using chmod u+x command
+```
 
 ## You are on your own, create your own static webpage
 
@@ -452,9 +489,35 @@ docker run --detach -v /workspaces/OSProject/webpage:/usr/local/apache2/htdocs/ 
 
 ***Questions:***
 
-1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __Fill answer here__.
-2. What port is the apache web server running. ***(1 mark)***
-3. What port is open for http protocol on the host machine? ***(1 mark)***
+1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** 
+```bash 
+"Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/workspaces/NatsysProject/webpage",
+                "Destination": "/usr/local/apache2/htdocs",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+the permission and ownership of /usr/local/apache/htdocs 
+-rw-rw-rw- 1 1000 1000 160 May 26 12:27 index.html
+user and group 
+User www-data
+Group www-data
+```
+
+
+2. What port is the apache web server running. 
+```bash 
+#Listen 12.34.56.78:80
+Listen 80
+```
+
+3. What port is open for http protocol on the host machine? 
+```bash
+0.0.0.0:8080->80/tcp, :::8080->80/tcp
+```
 
 ## Create SUB Networks
 
