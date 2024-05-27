@@ -536,11 +536,37 @@ docker run -itd --net rednet --name c2 busybox sh
 ```
 ***Questions:***
 
-1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** __Fill answer here__.
-2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)***
-3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)***
+1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** 
+```bash 
+BusyBox is a software suite that provides several Unix utilities in a single executable file. It is often referred to as "The Swiss Army Knife of Embedded Linux" because it combines tiny versions of many common UNIX utilities into a single small executable, providing a minimalist but functional environment. BusyBox is commonly used in embedded systems and is a popular choice for creating small, efficient Docker containers.
+
+The --name switch in Docker is used to assign a specific name to a container. By default, Docker assigns a random name to containers, but using --name, you can specify a meaningful and easily identifiable name for your container
+```
+2. Explore the network using the command ```docker network ls```, show the output of your terminal.
+```bash
+@Nopaalll ➜ /workspaces/NatSysProject (main) $ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+68c615853fe8   bluenet   bridge    local
+817f86a53b4e   bridge    bridge    local
+9582dff97326   host      host      local
+738857ce9318   none      null      local
+8e3ac7c0970e   rednet    bridge    local
+```
+3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? 
+```bash
+bluenet : "Gateway": "172.18.0.1",
+rednet : "Gateway": "172.19.0.1",
+```
+
 4. What is the network address for the running container c1 and c2.
-5. Using the command ```docker exec c1 ping c2```, which basically issue a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)***
+```bash
+bluenet : "IPAddress": "172.18.0.2",
+rednet : "IPAddress": "172.19.0.2",
+```
+5. Using the command ```docker exec c1 ping c2```, which basically issue a ping from container c1 to c2. Are you able to ping? Show your output .
+```bash
+ping: bad address 'c2'
+```
 
 ## Bridging two SUB Networks
 1. Let's try this again by creating a network to bridge the two containers in the two subnetworks
@@ -550,7 +576,15 @@ docker network connect bridgenet c1
 docker network connect bridgenet c2
 docker exec c1 ping c2
 ```
-
+```bash 
+@Nopaalll ➜ /workspaces/NatSysProject (main) $ docker exec c1 ping c2
+PING c2 (172.20.0.3): 56 data bytes
+64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.125 ms
+64 bytes from 172.20.0.3: seq=1 ttl=64 time=0.074 ms
+64 bytes from 172.20.0.3: seq=2 ttl=64 time=0.106 ms
+64 bytes from 172.20.0.3: seq=3 ttl=64 time=0.085 ms
+64 bytes from 172.20.0.3: seq=4 ttl=64 time=0.091 ms
+```
 ## What to submit
 
 1. Make sure to commit all changes on your source control, and make sure your source control is sync to the repository. 
